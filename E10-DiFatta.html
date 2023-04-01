@@ -20,10 +20,8 @@
     border: 10px solid black; padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 5px;
     } 
-    img {visibility: hidden
-    }
-    p {visibility: hidden
-    }
+    
+    
     
   </style>
 
@@ -64,6 +62,18 @@
 
     </div>
 
+    <div id = "div4" class = "floatLeft">
+
+        <img src = "https://media.istockphoto.com/id/475696742/vector/vectot-weather-widget-for-smartphone.jpg?s=612x612&w=0&k=20&c=lIaY0wbz0tzwMzIYCRFNWYeHlt69cbtSwGreMzwIeCk=" id = "image4" width="690px" height = "500px">
+    
+    </div>
+
+    <div id = "div5" class = "floatRight">
+
+        <img src = "https://martech.org/wp-content/uploads/2017/09/spotify-logo-1920x1080.jpg" id = "image5" width="600" height="350px"> 
+    
+    </div>
+
     <p style="clear:left;"></p>
     <p style="clear:right;"></p>
 
@@ -74,10 +84,16 @@
         <input type= button style = "background-color:purple; color:white;" onclick="Button4()" id = "button4" value= "Change Current Time" </button>
         <input type= button style = "background-color: orange; color:white;" onclick="Button5()" id = "button5" value= "Show/Turn On TV" </button>
         <input type= button style = "background-color: grey; color:white;" onclick="Button6()" id = "button6" value= "Show Browser" </button>
+        <input type= button style = "background-color: rgb(109, 185, 210); color:white;" onclick="Button7()" id = "button7" value= "Show Current Weather Forecast" </button>
+        <input type= button style = "background-color: rgb(6, 142, 24); color:white;" onclick="Button8()" id = "button8" value= "Show Spotify" </button>
     </div>
 
     <audio id = "TV">
         <source src = "tv on.mp3" type = "audio/mpeg">
+    </audio>
+
+    <audio id = "Spotify">
+        <source src = "soft piano music.mp3" type = "audio/mpeg">
     </audio>
 
     
@@ -88,12 +104,16 @@
     div1.style.display = "none";
     div2.style.display = "none";
     div3.style.display = "none";
+    div4.style.display = "none";
+    div5.style.display = "none";
 
     button2.style.display = "none";
     button3.style.display = "none";
     button4.style.display = "none";
     button5.style.display = "none";
     button6.style.display = "none";
+    button7.style.display = "none";
+    button8.style.display = "none";
 
     function doStartClock()
     {
@@ -118,6 +138,12 @@
         t.play();
     }
 
+    var s = document.getElementById("Spotify")
+
+    function playSpofityAudio() {
+        s.play()
+    }
+
 
     function Button1() {
       but1 = document.getElementById("button1")
@@ -133,11 +159,17 @@
         document.getElementById("button4").style.display='block';
         document.getElementById("button5").style.display='block';
         document.getElementById("button6").style.display='block';
+        document.getElementById("button7").style.display='block';
+        document.getElementById("button8").style.display='block';
         document.getElementById('button1').style.backgroundColor = "red";
         but5 = document.getElementById("button5");
         but5.value = "Show/Turn On TV";
         but6 = document.getElementById("button6");
         but6.value = "Show Browser";
+        but7 = document.getElementById("button7");
+        but7.value = "Show Current Weather Forecast";
+        but7 = document.getElementById("button8");
+        but7.value = "Show Spotify";
       } else {
         but1.value = "Turn App On"
         var d = document.getElementById("div1");
@@ -154,11 +186,21 @@
         d3.style.display = "none";
         var img3 = document.getElementById("image3");
         img3.style.visibility = 'hidden';
+        var d4 = document.getElementById("div4");
+        d4.style.display = "none";
+        var img4 = document.getElementById("image4");
+        img4.style.visibility = 'hidden';
+        var d5 = document.getElementById("div5");
+        d5.style.display = "none";
+        var img5 = document.getElementById("image5");
+        img5.style.visibility = 'hidden';
         document.getElementById('button1').style.backgroundColor = "green";
         document.getElementById("button2").style.display='none';
         document.getElementById("button4").style.display='none';
         document.getElementById("button5").style.display='none';
         document.getElementById("button6").style.display='none';
+        document.getElementById("button7").style.display='none';
+        document.getElementById("button8").style.display='none';
       }
     }
 
@@ -176,6 +218,8 @@
         document.getElementById('button1').style.display= 'none';
         document.getElementById('button5').style.display= 'none';
         document.getElementById('button6').style.display= 'none';
+        document.getElementById('button7').style.display= 'none';
+        document.getElementById('button8').style.display= 'none';
         but3 = document.getElementById("button3");
         but3.value = "On";
         document.getElementById('button3').style.backgroundColor = "green";
@@ -196,6 +240,8 @@
         document.getElementById('button1').style.display= 'block';
         document.getElementById('button5').style.display= 'block';
         document.getElementById('button6').style.display= 'block';
+        document.getElementById('button7').style.display= 'block';
+        document.getElementById('button8').style.display= 'block';
         var p = document.getElementById("offTemp");
         p.style.visibility = 'hidden';
         var p = document.getElementById("onTemp");
@@ -229,7 +275,7 @@
     function Button4() {
         but4 = document.getElementById("button4")
         if (but4.value == "Change Current Time") {
-            
+
         }
     }
 
@@ -266,6 +312,41 @@
         var img = document.getElementById("image3");
         img.style.visibility = 'hidden';
       }
+    }
+
+    function Button7() {
+        but7 = document.getElementById("button7")
+        if (but7.value == "Show Current Weather Forecast") {
+            but7.value = "Hide Current Weather Forecast";
+            var d4 = document.getElementById("div4");
+            d4.style.display = "block";
+            var img4 = document.getElementById("image4");
+            img4.style.visibility = "visible";
+        } else {
+            but7.value = "Show Current Weather Forecast";
+            var d = document.getElementById("div4");
+            d.style.display = 'none';
+            var img = document.getElementById("image4");
+            img.style.visibility = 'hidden';
+        }
+    }
+
+    function Button8() {
+        but8 = document.getElementById("button8")
+        if (but8.value == "Show Spotify") {
+            but8.value = "Hide Spotify";
+            playSpofityAudio();
+            var d5 = document.getElementById("div5");
+            d5.style.display = "block";
+            var img5 = document.getElementById("image5");
+            img5.style.visibility = "visible";
+        } else {
+            but8.value = "Show Spotify";
+            var d = document.getElementById("div5");
+            d.style.display = 'none';
+            var img = document.getElementById("image5");
+            img.style.visibility = 'hidden';
+        }
     }
     
 
