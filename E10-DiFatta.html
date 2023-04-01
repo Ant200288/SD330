@@ -98,7 +98,7 @@
         <input type= button style = "background-color: rgb(109, 185, 210); color:white;" onclick="Button7()" id = "button7" value= "Show Current Weather Forecast" </button>
         <input type= button style = "background-color: rgb(6, 142, 24); color:white;" onclick="Button8()" id = "button8" value= "Show Spotify" </button>
         <input type= button style = "background-color: rgb(8, 187, 203); color:white;" onclick="Button9()" id = "button9" value= "Show Temp" </button>
-        <input type= button style = "background-color: rgb(230, 179, 10); color:white;" onclick="Button10()" id = "button10" value= "Start Minute Timer" </button>
+        <input type= button style = "background-color: rgb(230, 179, 10); color:white;" onclick="Button10()" id = "button10" value= "Show/Start Minute Timer" </button>
     </div>
 
     <audio id = "TV">
@@ -416,13 +416,13 @@
 
     function Button10() {
         but10 = document.getElementById("button10")
-        if (but10.value == "Start Minute Timer") {
+        if (but10.value == "Show/Start Minute Timer") {
             but10.value = "Stop Minute Timer";
             startTimer(); 
             var d6 = document.getElementById("div6");
             d6.style.display = "block";
         } else {
-            but10.value = "Start Minute Timer";
+            but10.value = "Show/Start Minute Timer";
             var d = document.getElementById("div6");
             d.style.display = "none";  
             clearTimeout(t); 
