@@ -196,7 +196,7 @@
       }
 
       document.getElementById('countdown').innerHTML = m + ":" + s;
-      t = setTimeout(startTimer, 1000); 
+      o = setTimeout(startTimer, 1000); 
       if (m == 0 && s== 00) {
         playBeepSound();
       } 
@@ -238,7 +238,7 @@
         but10.value = "Show/Start Minute Timer";
       } else {
         but1.value = "Turn App On"
-        clearTimeout(t);
+        clearTimeout(o);
         var d = document.getElementById("div1");
         d.style.display = "none";
         var img = document.getElementById("image1");
@@ -425,7 +425,7 @@
             but10.value = "Show/Start Minute Timer";
             var d = document.getElementById("div6");
             d.style.display = "none";  
-            clearTimeout(t); 
+            clearTimeout(o); 
         }   
     }
        
