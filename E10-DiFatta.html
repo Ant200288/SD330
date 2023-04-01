@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> E10-DiFatta </title>  
+  <meta charset="UTF-8">
+
+  <style>
+    body { background-color: rgb(179, 47, 47); color: rgb(73, 165, 246);}
+    div {border: 10px solid black; 
+    border-width: 5px;
+    padding: 10px 10px 10px 10px;
+    width: 97%;
+    margin: 10px 10px 10px 10px;
+    }
+    .floatLeft{float:left; width: 50%;
+    border: 10px solid black; padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 5px;
+    } 
+    .floatRight{float:right; width: 42%;
+    border: 10px solid black; padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 5px;
+    } 
+    img {visibility: hidden
+    }
+    p {visibility: hidden
+    }
+    
+  </style>
+
+</head>
+
+<body onload = "doStartClock();">
+
+    Anthony DiFatta
+    <br>
+    Professor Tokash
+    <br>
+    System Design
+    <br>
+    4/1/23
+
+    <center> Designing a Fridge App V2 </center>
+
+    <hr>
+
+    <div id = "div1" class = "div">
+
+       <p id ="timePar" style ="font-size:3em; font-family: 'Courier New', Courier, monospace;
+        text-align: center;"> 00:00:00</p> 
+
+        <center><img src = "https://image.similarpng.com/very-thumbnail/2020/05/Closed-refrigerators---fridge-illustration-vector-PNG.png" id="image1" width=250px height="300px"> </center>
+
+    </div>
+
+    <div id = "div2" class = "floatLeft">
+
+      <img src = "https://images.philips.com/is/image/PhilipsConsumer/58PUT6604_81-IMS-en_EG?wid=880&hei=530&$jpglarge$" id = "image2" width="690px" height="300px">
+
+    </div>
+
+    <div id = "div3" class = "floatRight">
+
+      <img src = "https://gdm-catalog-fmapi-prod.imgix.net/ProductScreenshot/a2f34655-bfc0-46ab-9c31-21c1bc44d078.png" id = "image3" width="590px" height="300px">
+
+    </div>
+
+    <p style="clear:left;"></p>
+    <p style="clear:right;"></p>
+
+    <div id = "buttons" class = "div">
+        <input type= button style = "background-color: green; color:white;" onclick="Button1()"  id ="button1" value = "Turn App On" </button>
+        <input type= button style = "background-color:blue; color:white;" onclick="Button2()" id = "button2" value= "Open Fridge" </button>
+        <input type= button style = "background-color:green; color:white;" onclick="Button3()" id = "button3" value= "On" </button>
+        <input type= button style = "background-color:purple; color:white;" onclick="Button4()" id = "button4" value= "Change Current Time" </button>
+        <input type= button style = "background-color: orange; color:white;" onclick="Button5()" id = "button5" value= "Show/Turn On TV" </button>
+        <input type= button style = "background-color: grey; color:white;" onclick="Button6()" id = "button6" value= "Show Browser" </button>
+    </div>
+
+    <audio id = "TV">
+        <source src = "tv on.mp3" type = "audio/mpeg">
+    </audio>
+
+    
+  <script>
+
+    globalAuthor = "Anthony Di Fatta"; 
+
+    div1.style.display = "none";
+    div2.style.display = "none";
+    div3.style.display = "none";
+
+    button2.style.display = "none";
+    button3.style.display = "none";
+    button4.style.display = "none";
+    button5.style.display = "none";
+    button6.style.display = "none";
+
+    function doStartClock()
+    {
+        setInterval(doClockTick, 1000);
+    }
+
+    function doClockTick()
+    {
+        var currentDate = new Date();
+        var hours = currentDate.getHours();
+        var mins = currentDate.getMinutes();
+        var secs = currentDate.getSeconds();
+        var timeString = hours+":"+mins+":"+secs;
+
+        var outputElement = document.getElementById("timePar");
+        outputElement.textContent=timeString;
+    }
+
+    var t = document.getElementById("TV")
+
+    function playTVAudio() {
+        t.play();
+    }
+
+
+    function Button1() {
+      but1 = document.getElementById("button1")
+      if (but1.value == "Turn App On") {
+        but1.value = "Turn App Off";
+        var d = document.getElementById("div1");
+        d.style.display = 'block';
+        var img = document.getElementById("image1");
+        img.style.visibility = 'visible';
+        var p = document.getElementById("timePar");
+        p.style.visibility = 'visible';
+        document.getElementById("button2").style.display='block';
+        document.getElementById("button4").style.display='block';
+        document.getElementById("button5").style.display='block';
+        document.getElementById("button6").style.display='block';
+        document.getElementById('button1').style.backgroundColor = "red";
+        but5 = document.getElementById("button5");
+        but5.value = "Show/Turn On TV";
+        but6 = document.getElementById("button6");
+        but6.value = "Show Browser";
+      } else {
+        but1.value = "Turn App On"
+        var d = document.getElementById("div1");
+        d.style.display = "none";
+        var img = document.getElementById("image1");
+        img.style.visibility = 'hidden';
+        var p = document.getElementById("timePar");
+        p.style.visibility = 'hidden';
+        var d2 = document.getElementById("div2");
+        d2.style.display = "none";
+        var img2 = document.getElementById("image2");
+        img2.style.visibility = 'hidden';
+        var d3 = document.getElementById("div3");
+        d3.style.display = "none";
+        var img3 = document.getElementById("image3");
+        img3.style.visibility = 'hidden';
+        document.getElementById('button1').style.backgroundColor = "green";
+        document.getElementById("button2").style.display='none';
+        document.getElementById("button4").style.display='none';
+        document.getElementById("button5").style.display='none';
+        document.getElementById("button6").style.display='none';
+      }
+    }
+
+    function Button2() {
+      but2 = document.getElementById("button2");
+      if (but2.value == "Open Fridge") {
+        but2.value = "Close Fridge";
+        var pic = document.getElementById('image1');
+        pic.src = "https://alltechappliance.com/wp-content/uploads/2019/10/refrigerator-not-cooling-in-Portland.jpg";
+        pic.height = 300;
+        pic.width = 250;
+        document.getElementById('button2').style.backgroundColor = "black";
+        document.getElementById('button3').style.display='block'; 
+        document.getElementById('button4').style.display= 'none';
+        document.getElementById('button1').style.display= 'none';
+        document.getElementById('button5').style.display= 'none';
+        document.getElementById('button6').style.display= 'none';
+        but3 = document.getElementById("button3");
+        but3.value = "On";
+        document.getElementById('button3').style.backgroundColor = "green";
+        var div = document.getElementById('div1');
+        var p = document.getElementById("offTemp");
+        p.style.visibility = 'visible';
+        var p = document.getElementById("onTemp");
+        p.style.visibility = 'hidden';
+        } else {
+        but2.value = "Open Fridge";
+        var pic = document.getElementById('image1');
+        pic.src = "https://image.similarpng.com/very-thumbnail/2020/05/Closed-refrigerators---fridge-illustration-vector-PNG.png";
+        pic.height = 300;
+        pic.width = 250;
+        document.getElementById('button2').style.backgroundColor = "blue"; 
+        document.getElementById('button3').style.display='none'; 
+        document.getElementById('button4').style.display= 'block';
+        document.getElementById('button1').style.display= 'block';
+        document.getElementById('button5').style.display= 'block';
+        document.getElementById('button6').style.display= 'block';
+        var p = document.getElementById("offTemp");
+        p.style.visibility = 'hidden';
+        var p = document.getElementById("onTemp");
+        p.style.visibility = 'hidden';
+      }
+    }
+
+    function Button3() {
+      but3 = document.getElementById("button3");
+      if (but3.value == "On") {
+        but3.value = "Off";
+        var pic = document.getElementById('image1');
+        pic.src = "https://www.safefood.net/getmedia/d815b086-b7d4-43dd-a6fb-0becc198a681/Fridge_2.jpg?w=3333&h=2000&ext=.jpg&width=1360&resizemode=force";
+        document.getElementById('button3').style.backgroundColor = "red";
+        var p = document.getElementById("onTemp");
+        p.style.visibility = 'visible';
+        var p = document.getElementById("offTemp");
+        p.style.visibility = 'hidden'; 
+        } else {
+        but3.value = "On";
+        var pic = document.getElementById('image1');
+        pic.src = "https://alltechappliance.com/wp-content/uploads/2019/10/refrigerator-not-cooling-in-Portland.jpg";
+        document.getElementById('button3').style.backgroundColor = "green";
+        var p = document.getElementById("offTemp");
+        p.style.visibility = 'visible';
+        var p = document.getElementById("onTemp");
+        p.style.visibility = 'hidden';
+      }
+    }
+
+    function Button4() {
+        but4 = document.getElementById("button4")
+        if (but4.value == "Change Current Time") {
+            
+        }
+    }
+
+    function Button5() {
+      but5 = document.getElementById("button5")
+      if (but5.value == "Show/Turn On TV") {
+        but5.value = "Close TV";
+        playTVAudio();
+        var d2 = document.getElementById("div2");
+        d2.style.display = 'block';
+        var img2 = document.getElementById("image2");
+        img2.style.visibility = 'visible';
+      } else {
+        but5.value = "Show/Turn On TV";
+        var d = document.getElementById("div2");
+        d.style.display = 'none';
+        var img = document.getElementById("image2");
+        img.style.visibility = 'hidden';
+      }
+    }
+
+    function Button6() {
+      but6 = document.getElementById("button6")
+      if (but6.value == "Show Browser") {
+        but6.value = "Close Browser";
+        var d3 = document.getElementById("div3");
+        d3.style.display = 'block';
+        var img3 = document.getElementById("image3");
+        img3.style.visibility = 'visible';
+      } else {
+        but6.value = "Show Browser";
+        var d = document.getElementById("div3");
+        d.style.display = 'none';
+        var img = document.getElementById("image3");
+        img.style.visibility = 'hidden';
+      }
+    }
+    
+
+  </script>
+
+
+  <hr>
+  
+  <footer>
+  <small style = "color:black;"> &copy; Anthony Di Fatta</small>
+  </footer> 
+
+</body>
+</html>
