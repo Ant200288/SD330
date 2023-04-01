@@ -22,12 +22,13 @@
     } 
     
     
-    
   </style>
+
+ <!-- https://ant200288.github.io/SD330/E10-DiFatta.html-->
 
 </head>
 
-<body onload = "doStartClock();">
+<body onload="doStartClock()">
 
     Anthony DiFatta
     <br>
@@ -80,12 +81,13 @@
     <div id = "buttons" class = "div">
         <input type= button style = "background-color: green; color:white;" onclick="Button1()"  id ="button1" value = "Turn App On" </button>
         <input type= button style = "background-color:blue; color:white;" onclick="Button2()" id = "button2" value= "Open Fridge" </button>
-        <input type= button style = "background-color:green; color:white;" onclick="Button3()" id = "button3" value= "On" </button>
-        <input type= button style = "background-color:purple; color:white;" onclick="Button4()" id = "button4" value= "Change Current Time" </button>
+        <input type= button style = "background-color:green; color:white;" onclick="Button3()" id = "button3" value= "Fridge On" </button>
+        <input type= button style = "background-color:purple; color:white;" onclick="Button4()" id = "button4" value= "Change Time to 12 Hour Format" </button>
         <input type= button style = "background-color: orange; color:white;" onclick="Button5()" id = "button5" value= "Show/Turn On TV" </button>
         <input type= button style = "background-color: grey; color:white;" onclick="Button6()" id = "button6" value= "Show Browser" </button>
         <input type= button style = "background-color: rgb(109, 185, 210); color:white;" onclick="Button7()" id = "button7" value= "Show Current Weather Forecast" </button>
         <input type= button style = "background-color: rgb(6, 142, 24); color:white;" onclick="Button8()" id = "button8" value= "Show Spotify" </button>
+        <input type= button style = "background-color: rgb(8, 187, 203); color:white;" onclick="Button9()" id = "button9" value= "Show Temp" </button>
     </div>
 
     <audio id = "TV">
@@ -114,13 +116,27 @@
     button6.style.display = "none";
     button7.style.display = "none";
     button8.style.display = "none";
+    button9.style.display = "none";
 
     function doStartClock()
     {
-        setInterval(doClockTick, 1000);
+        time = setInterval(doClockTick24Hours, 1000);
     }
 
-    function doClockTick()
+    function doClockTick12Hours()
+    {
+        var currentDate = new Date();
+        var hours = currentDate.getHours();
+        hours = ((hours + 11) % 12 + 1);
+        var mins = currentDate.getMinutes();
+        var secs = currentDate.getSeconds();
+        var timeString = hours+":"+mins+":"+secs;
+
+        var outputElement = document.getElementById("timePar");
+        outputElement.textContent=timeString;
+    }
+
+    function doClockTick24Hours()
     {
         var currentDate = new Date();
         var hours = currentDate.getHours();
@@ -131,6 +147,7 @@
         var outputElement = document.getElementById("timePar");
         outputElement.textContent=timeString;
     }
+
 
     var t = document.getElementById("TV")
 
@@ -220,14 +237,10 @@
         document.getElementById('button6').style.display= 'none';
         document.getElementById('button7').style.display= 'none';
         document.getElementById('button8').style.display= 'none';
+        document.getElementById('button9').style.display= 'block';
         but3 = document.getElementById("button3");
-        but3.value = "On";
+        but3.value = "Fridge On";
         document.getElementById('button3').style.backgroundColor = "green";
-        var div = document.getElementById('div1');
-        var p = document.getElementById("offTemp");
-        p.style.visibility = 'visible';
-        var p = document.getElementById("onTemp");
-        p.style.visibility = 'hidden';
         } else {
         but2.value = "Open Fridge";
         var pic = document.getElementById('image1');
@@ -242,40 +255,35 @@
         document.getElementById('button6').style.display= 'block';
         document.getElementById('button7').style.display= 'block';
         document.getElementById('button8').style.display= 'block';
-        var p = document.getElementById("offTemp");
-        p.style.visibility = 'hidden';
-        var p = document.getElementById("onTemp");
-        p.style.visibility = 'hidden';
+        document.getElementById('button9').style.display= 'none';
       }
     }
 
     function Button3() {
       but3 = document.getElementById("button3");
-      if (but3.value == "On") {
-        but3.value = "Off";
+      if (but3.value == "Fridge On") {
+        but3.value = "Fridge Off";
         var pic = document.getElementById('image1');
         pic.src = "https://www.safefood.net/getmedia/d815b086-b7d4-43dd-a6fb-0becc198a681/Fridge_2.jpg?w=3333&h=2000&ext=.jpg&width=1360&resizemode=force";
         document.getElementById('button3').style.backgroundColor = "red";
-        var p = document.getElementById("onTemp");
-        p.style.visibility = 'visible';
-        var p = document.getElementById("offTemp");
-        p.style.visibility = 'hidden'; 
         } else {
-        but3.value = "On";
+        but3.value = "Fridge On";
         var pic = document.getElementById('image1');
         pic.src = "https://alltechappliance.com/wp-content/uploads/2019/10/refrigerator-not-cooling-in-Portland.jpg";
         document.getElementById('button3').style.backgroundColor = "green";
-        var p = document.getElementById("offTemp");
-        p.style.visibility = 'visible';
-        var p = document.getElementById("onTemp");
-        p.style.visibility = 'hidden';
       }
     }
 
     function Button4() {
         but4 = document.getElementById("button4")
-        if (but4.value == "Change Current Time") {
-
+        if (but4.value == "Change Time to 12 Hour Format") {
+            but4.value = "Change Time to 24 Hour Format";
+            clearInterval(time);
+            next_time = setInterval(doClockTick12Hours, 1000);
+        } else {
+            but4.value = "Change Time to 12 Hour Format";
+            clearInterval(next_time);
+            time = setInterval(doClockTick24Hours,1000);
         }
     }
 
