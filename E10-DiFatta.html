@@ -20,12 +20,15 @@
     border: 10px solid black; padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 5px;
     } 
+    .Timerfloat{float:left; width: 3%;
+    border: 5px solid black; padding: 2px 2px 2px 2px;
+    margin: 10px 10px 10px 10px;
+    } 
     
     
   </style>
 
  <!-- https://ant200288.github.io/SD330/E10-DiFatta.html-->
- <!-- Test-->
 
 </head>
 
@@ -66,7 +69,7 @@
 
     <div id = "div4" class = "floatLeft">
 
-        <img src = "https://media.istockphoto.com/id/475696742/vector/vectot-weather-widget-for-smartphone.jpg?s=612x612&w=0&k=20&c=lIaY0wbz0tzwMzIYCRFNWYeHlt69cbtSwGreMzwIeCk=" id = "image4" width="690px" height = "500px">
+        <img src = "https://media.istockphoto.com/id/475696742/vector/vectot-weather-widget-for-smartphone.jpg?s=612x612&w=0&k=20&c=lIaY0wbz0tzwMzIYCRFNWYeHlt69cbtSwGreMzwIeCk=" id = "image4" width="650px" height = "530px">
     
     </div>
 
@@ -76,6 +79,12 @@
     
     </div>
 
+    <div id = "div6" class = "Timerfloat">
+
+      <center><p id = "countdown" style = "color:gold;"></p></center>
+  
+  </div>
+
     <p style="clear:left;"></p>
     <p style="clear:right;"></p>
 
@@ -83,12 +92,13 @@
         <input type= button style = "background-color: green; color:white;" onclick="Button1()"  id ="button1" value = "Turn App On" </button>
         <input type= button style = "background-color:blue; color:white;" onclick="Button2()" id = "button2" value= "Open Fridge" </button>
         <input type= button style = "background-color:green; color:white;" onclick="Button3()" id = "button3" value= "Fridge On" </button>
-        <input type= button style = "background-color:purple; color:white;" onclick="Button4()" id = "button4" value= "Change Time to 12 Hour Format" </button>
+        <input type= button style = "background-color:purple; color:white;" onclick="Button4()" id = "button4" value= "Change Clock Time to 12 Hour Format" </button>
         <input type= button style = "background-color: orange; color:white;" onclick="Button5()" id = "button5" value= "Show/Turn On TV" </button>
         <input type= button style = "background-color: grey; color:white;" onclick="Button6()" id = "button6" value= "Show Browser" </button>
         <input type= button style = "background-color: rgb(109, 185, 210); color:white;" onclick="Button7()" id = "button7" value= "Show Current Weather Forecast" </button>
         <input type= button style = "background-color: rgb(6, 142, 24); color:white;" onclick="Button8()" id = "button8" value= "Show Spotify" </button>
         <input type= button style = "background-color: rgb(8, 187, 203); color:white;" onclick="Button9()" id = "button9" value= "Show Temp" </button>
+        <input type= button style = "background-color: rgb(230, 179, 10); color:white;" onclick="Button10()" id = "button10" value= "Start Minute Timer" </button>
     </div>
 
     <audio id = "TV">
@@ -98,6 +108,10 @@
     <audio id = "Spotify">
         <source src = "soft piano music.mp3" type = "audio/mpeg">
     </audio>
+
+    <audio id = "Beep">
+      <source src = "beep beep sound.mp3" type = "audio/mpeg">
+  </audio>
 
     
   <script>
@@ -109,6 +123,7 @@
     div3.style.display = "none";
     div4.style.display = "none";
     div5.style.display = "none";
+    div6.style.display = "none";
 
     button2.style.display = "none";
     button3.style.display = "none";
@@ -118,6 +133,25 @@
     button7.style.display = "none";
     button8.style.display = "none";
     button9.style.display = "none";
+    button10.style.display = "none";
+
+    var t = document.getElementById("TV")
+
+    function playTVAudio() {
+      t.play();
+    }
+
+    var s = document.getElementById("Spotify")
+
+    function playSpofityAudio() {
+      s.play()
+    }
+
+    var p = document.getElementById("Beep")
+
+    function playBeepSound() {
+      p.play()
+    }
 
     function doStartClock()
     {
@@ -149,19 +183,30 @@
         outputElement.textContent=timeString;
     }
 
+    document.getElementById('countdown').innerHTML = 01 + ":" + 02;
+  
+    function startTimer() {
+      var presentTime = document.getElementById('countdown').innerHTML;
+      var timeArray = presentTime.split(/[:]+/);
+      var m = timeArray[0];
+      var s = checkSecond((timeArray[1] - 1));
+      if(s==59){m=m-1}
+      if(m<0){
+        return
+      }
 
-    var t = document.getElementById("TV")
-
-    function playTVAudio() {
-        t.play();
+      document.getElementById('countdown').innerHTML = m + ":" + s;
+      t = setTimeout(startTimer, 1000); 
+      if (m == 0 && s== 00) {
+        playBeepSound();
+      } 
     }
 
-    var s = document.getElementById("Spotify")
-
-    function playSpofityAudio() {
-        s.play()
+    function checkSecond(sec) {
+      if (sec < 10 && sec >= 0) {sec = "0" + sec}; 
+      if (sec < 0) {sec = "59"};
+      return sec;
     }
-
 
     function Button1() {
       but1 = document.getElementById("button1")
@@ -179,6 +224,7 @@
         document.getElementById("button6").style.display='block';
         document.getElementById("button7").style.display='block';
         document.getElementById("button8").style.display='block';
+        document.getElementById("button10").style.display='block';
         document.getElementById('button1').style.backgroundColor = "red";
         but5 = document.getElementById("button5");
         but5.value = "Show/Turn On TV";
@@ -186,10 +232,13 @@
         but6.value = "Show Browser";
         but7 = document.getElementById("button7");
         but7.value = "Show Current Weather Forecast";
-        but7 = document.getElementById("button8");
-        but7.value = "Show Spotify";
+        but8 = document.getElementById("button8");
+        but8.value = "Show Spotify";
+        but10 = document.getElementById("button10");
+        but10.value = "Start Minute Timer";
       } else {
         but1.value = "Turn App On"
+        clearTimeout(t);
         var d = document.getElementById("div1");
         d.style.display = "none";
         var img = document.getElementById("image1");
@@ -212,6 +261,8 @@
         d5.style.display = "none";
         var img5 = document.getElementById("image5");
         img5.style.visibility = 'hidden';
+        var d6 = document.getElementById("div6");
+        d6.style.display = "none";
         document.getElementById('button1').style.backgroundColor = "green";
         document.getElementById("button2").style.display='none';
         document.getElementById("button4").style.display='none';
@@ -219,6 +270,7 @@
         document.getElementById("button6").style.display='none';
         document.getElementById("button7").style.display='none';
         document.getElementById("button8").style.display='none';
+        document.getElementById("button10").style.display='none';
       }
     }
 
@@ -239,6 +291,7 @@
         document.getElementById('button7').style.display= 'none';
         document.getElementById('button8').style.display= 'none';
         document.getElementById('button9').style.display= 'block';
+        document.getElementById('button10').style.display= 'none';
         but3 = document.getElementById("button3");
         but3.value = "Fridge On";
         document.getElementById('button3').style.backgroundColor = "green";
@@ -257,6 +310,7 @@
         document.getElementById('button7').style.display= 'block';
         document.getElementById('button8').style.display= 'block';
         document.getElementById('button9').style.display= 'none';
+        document.getElementById('button10').style.display= 'none';
       }
     }
 
@@ -276,20 +330,20 @@
     }
 
     function Button4() {
-        but4 = document.getElementById("button4")
-        if (but4.value == "Change Time to 12 Hour Format") {
-            but4.value = "Change Time to 24 Hour Format";
+        but4 = document.getElementById("button4");
+        if (but4.value == "Change Clock Time to 12 Hour Format") {
+            but4.value = "Change Clock Time to 24 Hour Format";
             clearInterval(time);
             next_time = setInterval(doClockTick12Hours, 1000);
         } else {
-            but4.value = "Change Time to 12 Hour Format";
+            but4.value = "Change Clock Time to 12 Hour Format";
             clearInterval(next_time);
             time = setInterval(doClockTick24Hours,1000);
         }
     }
 
     function Button5() {
-      but5 = document.getElementById("button5")
+      but5 = document.getElementById("button5");
       if (but5.value == "Show/Turn On TV") {
         but5.value = "Close TV";
         playTVAudio();
@@ -307,7 +361,7 @@
     }
 
     function Button6() {
-      but6 = document.getElementById("button6")
+      but6 = document.getElementById("button6");
       if (but6.value == "Show Browser") {
         but6.value = "Close Browser";
         var d3 = document.getElementById("div3");
@@ -326,7 +380,7 @@
     function Button7() {
         but7 = document.getElementById("button7")
         if (but7.value == "Show Current Weather Forecast") {
-            but7.value = "Hide Current Weather Forecast";
+            but7.value = "Close Current Weather Forecast";
             var d4 = document.getElementById("div4");
             d4.style.display = "block";
             var img4 = document.getElementById("image4");
@@ -343,7 +397,7 @@
     function Button8() {
         but8 = document.getElementById("button8")
         if (but8.value == "Show Spotify") {
-            but8.value = "Hide Spotify";
+            but8.value = "Close Spotify";
             playSpofityAudio();
             var d5 = document.getElementById("div5");
             d5.style.display = "block";
@@ -357,6 +411,24 @@
             img.style.visibility = 'hidden';
         }
     }
+
+    function Button9() {}
+
+    function Button10() {
+        but10 = document.getElementById("button10")
+        if (but10.value == "Start Minute Timer") {
+            but10.value = "Stop Minute Timer";
+            startTimer(); 
+            var d6 = document.getElementById("div6");
+            d6.style.display = "block";
+        } else {
+            but10.value = "Start Minute Timer";
+            var d = document.getElementById("div6");
+            d.style.display = "none";  
+            clearTimeout(t); 
+        }   
+    }
+       
     
 
   </script>
