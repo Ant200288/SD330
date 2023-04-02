@@ -4,6 +4,8 @@
   <title> E10-DiFatta </title>  
   <meta charset="UTF-8">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
   <style>
     body { background-color: rgb(179, 47, 47); color: rgb(73, 165, 246);}
     div {border: 10px solid black; 
@@ -28,6 +30,7 @@
   </style>
 
  <!-- https://ant200288.github.io/SD330/E10-DiFatta.html-->
+ 
 
 </head>
 
@@ -51,10 +54,14 @@
         text-align: center;"> 00:00:00</p> 
 
         <center><img src = "https://image.similarpng.com/very-thumbnail/2020/05/Closed-refrigerators---fridge-illustration-vector-PNG.png" id="image1" width=250px height="300px"> </center>
+
         
-        <input type= button style = "background-color:rgb(9, 209, 209); color:white"; onclick="Button11()" id ="button11" value = "Temp Down" </button>
-        <span id = "span1">0°F</span>
-        <input type= button style = "background-color:rgb(168, 11, 11); color:white"; onclick="Button12()" id ="button12" value = "Temp Up" </button>
+        <center>
+        <button onclick="totalClick(1)" id = "button11" style = "background-color:rgb(168, 11, 11); color:white" ><i class="fa-solid fa-arrow-up fa"></i></button>
+        <span id = "span1">30</span>
+        <button onclick="totalClick(-1)" id = "button12" style = "background-color:rgb(9, 209, 209); color:white"><i class="fa-solid fa-arrow-down fa"></i></button>
+        <center>
+        
     </div>
 
     <div id = "div2" class = "floatLeft">
@@ -211,6 +218,19 @@
       if (sec < 10 && sec >= 0) {sec = "0" + sec}; 
       if (sec < 0) {sec = "59"};
       return sec;
+    }
+
+    function totalClick(click) {
+      const totalClicks = document.getElementById("span1");
+      const sumvalue  = parseInt(totalClicks.innerText) + click;
+      totalClicks.innerText = sumvalue;
+
+      if(sumvalue < 30) {
+        totalClicks.innerText = 30;
+      }
+      if (sumvalue > 45) {
+        totalClicks.innerText = 45;
+      } 
     }
 
     function Button1() {
