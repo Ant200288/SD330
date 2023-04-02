@@ -23,9 +23,8 @@
     .Timerfloat{float:left; width: 3%;
     border: 5px solid black; padding: 2px 2px 2px 2px;
     margin: 10px 10px 10px 10px;
-    } 
-    
-    
+    }
+
   </style>
 
  <!-- https://ant200288.github.io/SD330/E10-DiFatta.html-->
@@ -52,7 +51,10 @@
         text-align: center;"> 00:00:00</p> 
 
         <center><img src = "https://image.similarpng.com/very-thumbnail/2020/05/Closed-refrigerators---fridge-illustration-vector-PNG.png" id="image1" width=250px height="300px"> </center>
-
+        
+        <input type= button style = "background-color:rgb(9, 209, 209); color:white"; onclick="Button11()" id ="button11" value = "Temp Down" </button>
+        <span id = "span1">0°F</span>
+        <input type= button style = "background-color:rgb(168, 11, 11); color:white"; onclick="Button12()" id ="button12" value = "Temp Up" </button>
     </div>
 
     <div id = "div2" class = "floatLeft">
@@ -124,6 +126,7 @@
     div4.style.display = "none";
     div5.style.display = "none";
     div6.style.display = "none";
+    span1.style.display = "none";
 
     button2.style.display = "none";
     button3.style.display = "none";
@@ -134,6 +137,8 @@
     button8.style.display = "none";
     button9.style.display = "none";
     button10.style.display = "none";
+    button11.style.display = "none";
+    button12.style.display = "none";
 
     var t = document.getElementById("TV")
 
@@ -218,6 +223,7 @@
         img.style.visibility = 'visible';
         var p = document.getElementById("timePar");
         p.style.visibility = 'visible';
+        document.getElementById('button1').style.backgroundColor = "red";
         document.getElementById("button2").style.display='block';
         document.getElementById("button4").style.display='block';
         document.getElementById("button5").style.display='block';
@@ -225,7 +231,6 @@
         document.getElementById("button7").style.display='block';
         document.getElementById("button8").style.display='block';
         document.getElementById("button10").style.display='block';
-        document.getElementById('button1').style.backgroundColor = "red";
         but5 = document.getElementById("button5");
         but5.value = "Show/Turn On TV";
         but6 = document.getElementById("button6");
@@ -238,7 +243,6 @@
         but10.value = "Show/Start Minute Timer";
       } else {
         but1.value = "Turn App On"
-        clearTimeout(o);
         var d = document.getElementById("div1");
         d.style.display = "none";
         var img = document.getElementById("image1");
@@ -271,6 +275,7 @@
         document.getElementById("button7").style.display='none';
         document.getElementById("button8").style.display='none';
         document.getElementById("button10").style.display='none';
+        clearTimeout(o);
       }
     }
 
@@ -295,6 +300,8 @@
         but3 = document.getElementById("button3");
         but3.value = "Fridge On";
         document.getElementById('button3').style.backgroundColor = "green";
+        but9 = document.getElementById("button9");
+        but9.value = "Show Temp";
         } else {
         but2.value = "Open Fridge";
         var pic = document.getElementById('image1');
@@ -310,7 +317,11 @@
         document.getElementById('button7').style.display= 'block';
         document.getElementById('button8').style.display= 'block';
         document.getElementById('button9').style.display= 'none';
-        document.getElementById('button10').style.display= 'none';
+        document.getElementById('button10').style.display= 'block';
+        document.getElementById('button11').style.display= 'none';
+        document.getElementById('button12').style.display= 'none';
+        var s = document.getElementById("span1");
+        s.style.display  = "none";
       }
     }
 
@@ -412,12 +423,27 @@
         }
     }
 
-    function Button9() {}
+    function Button9() {
+      but9 = document.getElementById("button9")
+      if (but9.value == "Show Temp") {
+          but9.value = "Hide Temp";
+          var s1 = document.getElementById("span1");
+          s1.style.display = "block";
+          document.getElementById('button11').style.display= 'block';
+          document.getElementById('button12').style.display= 'block';
+      } else {
+          but9.value = "Show Temp";
+          var s = document.getElementById("span1");
+          s.style.display  = "none";
+          document.getElementById('button11').style.display= 'none';
+          document.getElementById('button12').style.display= 'none';
+      }
+    }
 
     function Button10() {
         but10 = document.getElementById("button10")
         if (but10.value == "Show/Start Minute Timer") {
-            but10.value = "Stop Minute Timer";
+            but10.value = "Pause/Close Minute Timer";
             startTimer(); 
             var d6 = document.getElementById("div6");
             d6.style.display = "block";
