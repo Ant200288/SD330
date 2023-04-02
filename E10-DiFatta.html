@@ -233,6 +233,14 @@
       } 
     }
 
+    function randomNum() {
+    var x = Math.random() * (45 - 30) + 30;
+    var y = Math.round(x);
+    document.getElementById("span1").innerHTML = y;
+  }
+
+    window.onload = randomNum;
+
     function Button1() {
       but1 = document.getElementById("button1")
       if (but1.value == "Turn App On") {
