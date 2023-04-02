@@ -58,7 +58,7 @@
         
         <center>
         <button onclick="totalClick(1)" id = "button11" style = "background-color:rgb(168, 11, 11); color:white" ><i class="fa-solid fa-arrow-up fa"></i></button>
-        <span id = "span1">30</span>
+        <span id = "span1">33</span>
         <button onclick="totalClick(-1)" id = "button12" style = "background-color:rgb(9, 209, 209); color:white"><i class="fa-solid fa-arrow-down fa"></i></button>
         <center>
         
@@ -225,16 +225,16 @@
       const sumvalue  = parseInt(totalClicks.innerText) + click;
       totalClicks.innerText = sumvalue;
 
-      if(sumvalue < 30) {
-        totalClicks.innerText = 30;
+      if(sumvalue < 33) {
+        totalClicks.innerText = 33;
       }
-      if (sumvalue > 45) {
-        totalClicks.innerText = 45;
+      if (sumvalue > 40) {
+        totalClicks.innerText = 40;
       } 
     }
 
     function randomNum() {
-    var x = Math.random() * (45 - 30) + 30;
+    var x = Math.random() * (40 - 33) + 33;
     var y = Math.round(x);
     document.getElementById("span1").innerHTML = y;
   }
