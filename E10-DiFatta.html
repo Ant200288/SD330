@@ -34,7 +34,7 @@
 
 </head>
 
-<body onload="doStartClock();randomNum()">
+<body onload="doStartClock();">
 
     Anthony DiFatta
     <br>
@@ -92,7 +92,24 @@
 
       <center><p id = "countdown" style = "color:gold;"></p></center>
   
-  </div>
+    </div>
+
+    <div id = "div7" class = "floatLeft">
+
+      <center><p> My Shopping List</p></center>
+      <ul id="Shopping">
+        <li>pencils</li>
+        <li>pasta</li>
+        <li>apples</li>
+        <li>grapes</li>
+        <li> pens </li>
+      </ul>
+
+      <input type="text" id="add">
+      <button style = "background-color: green; color:white;" onclick="Button15()" id = "button15"> Add Item </button>
+    <button style =  "background-color: rgb(247, 6, 6); color:white;" onclick="Button16()" id  = "button16"> Remove The Last item </button>
+
+    </div>
 
     <p style="clear:left;"></p>
     <p style="clear:right;"></p>
@@ -100,7 +117,7 @@
     <div id = "buttons" class = "div">
         <input type= button style = "background-color: green; color:white;" onclick="Button1()"  id ="button1" value = "Turn App On" </button>
         <input type= button style = "background-color:blue; color:white;" onclick="Button2()" id = "button2" value= "Open Fridge" </button>
-        <input type= button style = "background-color:green; color:white;" onclick="Button3()" id = "button3" value= "Fridge On" </button>
+        <input type= button style = "background-color:green; color:white;" onclick="Button3()" id = "button3" value= "Fridge Light On" </button>
         <input type= button style = "background-color:purple; color:white;" onclick="Button4()" id = "button4" value= "Change Clock Time to 12 Hour Format" </button>
         <input type= button style = "background-color: orange; color:white;" onclick="Button5()" id = "button5" value= "Show/Turn On TV" </button>
         <input type= button style = "background-color: grey; color:white;" onclick="Button6()" id = "button6" value= "Show Browser" </button>
@@ -108,6 +125,8 @@
         <input type= button style = "background-color: rgb(6, 142, 24); color:white;" onclick="Button8()" id = "button8" value= "Show Spotify" </button>
         <input type= button style = "background-color: rgb(8, 187, 203); color:white;" onclick="Button9()" id = "button9" value= "Show Temp" </button>
         <input type= button style = "background-color: rgb(230, 179, 10); color:white;" onclick="Button10()" id = "button10" value= "Show/Start Minute Timer" </button>
+        <input type= button style = "background-color: rgb(43, 154, 229); color:white;" onclick="Button13()" id = "button13" value= "Convert Temperature To Celsius" </button>
+        <input type= button style = "background-color: rgb(172, 109, 26); color:white;" onclick="Button14()" id = "button14" value= "Show Shopping List" </button>
     </div>
 
     <audio id = "TV">
@@ -127,6 +146,8 @@
 
     globalAuthor = "Anthony Di Fatta"; 
 
+    isCelcius = false;
+
     div1.style.display = "none";
     div2.style.display = "none";
     div3.style.display = "none";
@@ -134,6 +155,7 @@
     div5.style.display = "none";
     div6.style.display = "none";
     span1.style.display = "none";
+    div7.style.display = "none";
 
     button2.style.display = "none";
     button3.style.display = "none";
@@ -146,6 +168,9 @@
     button10.style.display = "none";
     button11.style.display = "none";
     button12.style.display = "none";
+    button13.style.display = "none";
+    button14.style.display = "none";
+   
 
     var t = document.getElementById("TV")
 
@@ -223,22 +248,23 @@
     function totalClick(click) {
       const totalClicks = document.getElementById("span1");
       const sumvalue  = parseInt(totalClicks.innerText) + click;
-      totalClicks.innerText = sumvalue;
 
-      if(sumvalue < 33) {
-        totalClicks.innerText = 33;
+      if (isCelcius) {
+        if (sumvalue >= 0 && sumvalue < 5) {
+          totalClicks.innerText = sumvalue;
+        }
+      } else {
+        if (sumvalue >= 32 && sumvalue < 40) {
+          totalClicks.innerText = sumvalue;
+        }
       }
-      if (sumvalue > 40) {
-        totalClicks.innerText = 40;
-      } 
-    }
+   }
 
     function randomNum() {
-    var x = Math.random() * (40 - 33) + 33;
+    var x = Math.random() * (40 - 32) + 32;
     var y = Math.round(x);
     document.getElementById("span1").innerHTML = y;
   }
-
 
     function Button1() {
       but1 = document.getElementById("button1")
@@ -258,6 +284,7 @@
         document.getElementById("button7").style.display='block';
         document.getElementById("button8").style.display='block';
         document.getElementById("button10").style.display='block';
+        document.getElementById("button14").style.display='block';
         but5 = document.getElementById("button5");
         but5.value = "Show/Turn On TV";
         but6 = document.getElementById("button6");
@@ -268,6 +295,8 @@
         but8.value = "Show Spotify";
         but10 = document.getElementById("button10");
         but10.value = "Show/Start Minute Timer";
+        but14 = document.getElementById("button14");
+        but14.value = "Show Shopping List";
       } else {
         but1.value = "Turn App On"
         var d = document.getElementById("div1");
@@ -294,6 +323,8 @@
         img5.style.visibility = 'hidden';
         var d6 = document.getElementById("div6");
         d6.style.display = "none";
+        var d7 = document.getElementById("div7");
+        d7.style.display = "none";
         document.getElementById('button1').style.backgroundColor = "green";
         document.getElementById("button2").style.display='none';
         document.getElementById("button4").style.display='none';
@@ -302,6 +333,7 @@
         document.getElementById("button7").style.display='none';
         document.getElementById("button8").style.display='none';
         document.getElementById("button10").style.display='none';
+        document.getElementById("button14").style.display='none';
         clearTimeout(o);
       }
     }
@@ -324,8 +356,10 @@
         document.getElementById('button8').style.display= 'none';
         document.getElementById('button9').style.display= 'block';
         document.getElementById('button10').style.display= 'none';
+        document.getElementById("button13").style.display='none';
+        document.getElementById("button14").style.display='none';
         but3 = document.getElementById("button3");
-        but3.value = "Fridge On";
+        but3.value = "Fridge Light On";
         document.getElementById('button3').style.backgroundColor = "green";
         but9 = document.getElementById("button9");
         but9.value = "Show Temp";
@@ -347,6 +381,8 @@
         document.getElementById('button10').style.display= 'block';
         document.getElementById('button11').style.display= 'none';
         document.getElementById('button12').style.display= 'none';
+        document.getElementById("button13").style.display='none';
+        document.getElementById("button14").style.display='block';
         var s = document.getElementById("span1");
         s.style.display  = "none";
       }
@@ -354,13 +390,13 @@
 
     function Button3() {
       but3 = document.getElementById("button3");
-      if (but3.value == "Fridge On") {
-        but3.value = "Fridge Off";
+      if (but3.value == "Fridge Light On") {
+        but3.value = "Fridge Light Off";
         var pic = document.getElementById('image1');
         pic.src = "https://www.safefood.net/getmedia/d815b086-b7d4-43dd-a6fb-0becc198a681/Fridge_2.jpg?w=3333&h=2000&ext=.jpg&width=1360&resizemode=force";
         document.getElementById('button3').style.backgroundColor = "red";
         } else {
-        but3.value = "Fridge On";
+        but3.value = "Fridge Light On";
         var pic = document.getElementById('image1');
         pic.src = "https://alltechappliance.com/wp-content/uploads/2019/10/refrigerator-not-cooling-in-Portland.jpg";
         document.getElementById('button3').style.backgroundColor = "green";
@@ -453,17 +489,24 @@
     function Button9() {
       but9 = document.getElementById("button9")
       if (but9.value == "Show Temp") {
-          but9.value = "Hide Temp";
+          randomNum();
+          but9.value = "Close Temp";
           var s1 = document.getElementById("span1");
           s1.style.display = "block";
+          document.getElementById('button2').style.display = 'none';
+          document.getElementById('button3').style.display = 'none';
           document.getElementById('button11').style.display= 'block';
           document.getElementById('button12').style.display= 'block';
+          document.getElementById('button13').style.display= 'block';
       } else {
           but9.value = "Show Temp";
           var s = document.getElementById("span1");
           s.style.display  = "none";
+          document.getElementById('button2').style.display = 'block';
+          document.getElementById('button3').style.display = 'block';
           document.getElementById('button11').style.display= 'none';
           document.getElementById('button12').style.display= 'none';
+          document.getElementById('button13').style.display= 'none';
       }
     }
 
@@ -481,8 +524,51 @@
             clearTimeout(o); 
         }   
     }
-       
-    
+
+    function Button13() {
+      but13 = document.getElementById("button13")
+      if (but13.value == "Convert Temperature To Celsius") {
+          isCelcius = true;
+          but13.value = "Convert Temperature To Fahrenheit";
+          document.getElementById('button13').style.backgroundColor = "rgb(223, 30, 30)";
+          var span = document.getElementById("span1").innerHTML;
+          var span1 = parseFloat(span);
+          var temp = (span1 - 32) * (5/9);
+          document.getElementById("span1").innerHTML = Math.round(temp); 
+      } else {
+          isCelcius = false;
+          but13.value = "Convert Temperature To Celsius";
+          document.getElementById('button13').style.backgroundColor = "rgb(43, 154, 229)";
+          var span = document.getElementById("span1").innerHTML;
+          var span1 = parseFloat(span);
+          var temp = (span1 * (9/5)) + 32;
+          document.getElementById("span1").innerHTML = Math.round(temp);
+      }
+    }
+
+    function Button14() {
+      but14 = document.getElementById("button14") 
+      if (but14.value == "Show Shopping List") {
+          but14.value = "Close Shopping List";
+          var d7 = document.getElementById("div7");
+          d7.style.display = "block";
+      } else {
+          but14.value = "Show Shopping List";
+          var d = document.getElementById("div7");
+          d.style.display = "none";
+      }
+    }
+
+    function Button15() {
+      var shopping = document.getElementById("Shopping");
+      shopping.innerHTML += "<li>" + document.getElementById("add").value + "</li>";
+    }
+
+    function Button16() {
+      var shopping = document.getElementById("Shopping");
+      var elements = shopping.querySelectorAll("li");
+      shopping.removeChild(elements[elements.length - 1]);
+    }
 
   </script>
 
