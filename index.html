@@ -7,17 +7,33 @@
     <title>index.html</title>
 
     <style>
+		body {
+			background-image: url('https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
 
     </style>
 </head>
 
 <body onload="fileList()">
 
+	<h1 style = color:rgb(70,35,197);> Anthony Di Fatta's SD330 Files</h1>
+
+	<div>
+		<p style="float: left;"><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Soccerball.svg/800px-Soccerball.svg.png" width = "200" height = "200"></p>
+		<p style = color:rgb(70,35,197);>  My Avatar Photo!</p>
+	</div>
+
+	<div style="clear: left;"></div>
+
+	<p style = color:rgb(70,35,197);> This file displays my SD330 Github Repository, click the links to see my work!</p>
+
+	<hr>
+
     <p id = 'files'>
 
     </p>
-
-
 
     <script>
 
@@ -33,7 +49,7 @@
                     fpath = "https://ant200288.github.io/SD330/" + fname;
 
                     htmlString += "<ul>";
-                    htmlString += "<li><p>" + fname + "</p></li>" ;
+                    htmlString += "<li><p style = color:rgb(70,35,197);>" + fname + "</p></li>" ;
                     htmlString += "<p><a href=" + "'" + fpath + "'" + ">" + fpath + "</a></p>";
                     htmlString += "</ul>";
             }
@@ -45,8 +61,10 @@
 
     </script>
 
+	<hr>
+
     <footer>
-    <small> &copy; Anthony Di Fatta 4/8/23 </small></footer>
+    <small style = color:rgb(70,35,197);> &copy; Anthony Di Fatta 4/8/23 </small></footer>
     </footer> 
 
 </body>
