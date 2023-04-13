@@ -8,18 +8,39 @@
 
 </head>
 
+<style>
+    body {background-color: rgb(75, 110, 150); color:white;}
+</style>
+
 <body>
 
-    <script>
+    <p> Testing JSON</p>
+    <br>
+    
+    <p id = 'json'>
 
-       
+    </p>
+
+    <script type = "module">
+    
+    let htmlString = "";
+    
+    const response = await fetch("https://Ant200288.github.io/SD330/courses.json");
+    const data = await response.json();
+    
+    htmlString += "<p> CMPT330 Course ID: " + data['courses']['CMPT330']['Course ID'];
+    htmlString += "<p> CMPT330 Title: " + data['courses']['CMPT330']['Title'];
+    htmlString += "<p> CMPT330 Semestar: " + data['courses']['CMPT330']['Semestar'];
+    htmlString += "<p> CMPT330 Professor: " + data['courses']['CMPT330']['Professor'];
+    htmlString += "<p> CMPT330 Book Title" + data['Books']['CMPT330 Books']['Title'];
+    document.getElementById('json').innerHTML += htmlString;
 
     </script>
 
 	<hr>
 
     <footer>
-    <small style = color:rgb(70,35,197);> &copy; Anthony Di Fatta 4/8/23 </small></footer>
+    <small style = color:white;> &copy; Anthony Di Fatta 4/8/23 </small></footer>
     </footer> 
 
 </body>
