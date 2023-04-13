@@ -27,25 +27,25 @@
         
     },
     "Books": {
-        "CMPT330Books" :{
+        "CMPT330" :{
             "ISBN": "",
             "Title": "Design Principles" ,
             "Author": "",
             "CourseID": ""
         },
-        "CMPT418Books": {
+        "CMPT418": {
             "ISBN": "",
             "Title": "",
             "Author": "",
             "CourseID": ""
         },
-        "CMPT417Books": {
+        "CMPT417": {
             "ISBN": "",
             "Title": "",
             "Author": "",
             "CourseID": ""
         },
-        "REST107Books": {
+        "REST107": {
             "ISBN": "",
             "Title": "",
             "Author": "",
