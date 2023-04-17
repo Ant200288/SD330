@@ -27,25 +27,25 @@
         
     },
     "books": {
-        "CMPT330 Books" :{
+        "System Design" :{
             "ISBN": "1119547253",
             "Title": "Interaction Design 5th Edition" ,
             "Author": "Helen Sharp",
             "CourseID": "CMPT 330"
         },
-        "CMPT418 Books": {
+        "Mobile Security": {
             "ISBN": "128421172X",
             "Title": "Wireless and Mobile Device Security",
             "Author": "Jim Doherty",
             "CourseID": "CMPT 418"
         },
-        "CMPT417 Books": {
+        "Hacking and Pen Testing": {
             "ISBN": "1284147800",
             "Title": "Hacker Techniques, Tools, and Incident Handling",
             "Author": "Sean Oriyano",
             "CourseID": "CMPT 417"
         },
-        "REST107 Books": {
+        "Intro to Religion": {
             "ISBN": "0394748468",
             "Title": "The Norse Myths",
             "Author": "Kevin Holland",
