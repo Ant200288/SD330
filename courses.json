@@ -27,29 +27,29 @@
         
     },
     "books": {
-        "System Design" :{
-            "ISBN": "",
-            "Title": "Design Principles" ,
-            "Author": "",
-            "CourseID": ""
+        "CMPT330_Books" :{
+            "ISBN": "1119547253",
+            "Title": "Interaction Design 5th Edition" ,
+            "Author": "Helen Sharp",
+            "CourseID": "CMPT 330"
         },
-        "Mobile Security": {
-            "ISBN": "",
-            "Title": "",
-            "Author": "",
-            "CourseID": ""
+        "CMPT418_Books": {
+            "ISBN": "128421172X",
+            "Title": "Wireless and Mobile Device Security",
+            "Author": "Jim Doherty",
+            "CourseID": "CMPT 418"
         },
-        "Hacking and Penetration Testing": {
-            "ISBN": "",
-            "Title": "",
-            "Author": "",
-            "CourseID": ""
+        "CMPT417_Books": {
+            "ISBN": "1284147800",
+            "Title": "Hacker Techniques, Tools, and Incident Handling",
+            "Author": "Sean Oriyano",
+            "CourseID": "CMPT 417"
         },
-        "Intro to Religion": {
-            "ISBN": "",
-            "Title": "",
-            "Author": "",
-            "CourseID": ""
+        "REST107_Books": {
+            "ISBN": "0394748468",
+            "Title": "The Norse Myths",
+            "Author": "Kevin Holland",
+            "CourseID": "REST 107"
         }
         
     }
