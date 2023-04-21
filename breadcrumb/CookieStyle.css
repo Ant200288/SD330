@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(57, 141, 232);
+}
+h1 {
+    color: white;
+}
+p {
+    color: white;
+}
+footer {
+    color:white;
+}
+nav {
+    border-bottom: 1px solid white;
+}
+
+.crumbs ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.crumb {
+    display: inline-block;
+}
+
+.crumb a::after {
+    display: inline-block;
+    color: white;
+    content: '>';
+    font-size: 80%;
+    font-weight: bold;
+    padding: 0 3px;
+}
