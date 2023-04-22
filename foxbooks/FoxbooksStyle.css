@@ -16,7 +16,7 @@ footer {
 .topnav {
     overflow: hidden;
     background-color: #b4abab;
-    padding: 7px; /* Decrease the top and bottom padding */
+    padding: 5px; /* Decrease the top and bottom padding */
 }
 .topnav img {
     top: 5px;        
