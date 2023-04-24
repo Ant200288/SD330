@@ -6,16 +6,19 @@
     list-style: none;
     box-sizing: border-box;
 }
-
 body {
-    background-color:rgb(181, 76, 76)
+    background-color:rgb(181, 76, 76);
+    background-image: url(Foxbackground.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+    font-family: 'Arvo';font-size: 30px;
 }
 footer {
     color:white;
 }
 .topnav {
     overflow: hidden;
-    background-color: #b4abab;
+    background-color: rgb(54, 51, 51);
     padding: 5px; /* Decrease the top and bottom padding */
 }
 .topnav img {
@@ -24,16 +27,16 @@ footer {
 }
 .topnav a {
     display: inline-block; /* Set display to inline-block to make all links in the same line */
-    color: black;
+    color: rgb(248, 244, 244);
     text-align: center;
-    padding: 8px;
+    padding: 5px;
     font-size: 20px;
     cursor: pointer;
     margin-right: 30px; /* Add margin to space out the links horizontally */
 }
 .topnav a:hover { /* This is to change the color when the button is hovered both background and text */ 
-    background-color: #b4abab;
-    color: red;
+    background-color: rgb(54,51,51);
+    color:rgb(217, 98, 98);
 }
 .topnav input[type=text] { /* CSS for the actual search bar */
     padding: 6px;
@@ -47,4 +50,73 @@ footer {
     height: 32px;
     top: -2px;        
     left: -17px; 
+}
+h1 {
+    text-align: center; 
+    color:rgb(217, 98, 98);
+}
+h1 span { 
+    background-color: white;
+}
+p {
+    color:rgb(217, 98, 98);
+}
+p span { 
+    background-color: white;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.footer {
+    margin-top: 150px;
+    width: 100%;
+    padding: 100px 15%;
+    background-color: rgb(54, 51, 51);
+    color: #efefef;
+    display: flex;
+}
+.footer div {
+    text-align: center;
+}
+.col-2 {
+    flex-grow: 2;
+}
+.footer div h3 {
+    font-weight: 300;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+.col-1 a {
+    display: block;
+    text-decoration: none;
+    color: #efefef;
+    margin-bottom: 10px;
+}
+form input {
+    width: 400px;
+    height: 45px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    outline: none;
+    border: none;
+}
+form button {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.social-icons {
+    margin-top: 30px;
+}
+.social-icons i {
+    font-size: 22px;
+    margin: 10px;
+    cursor: pointer;
 }
