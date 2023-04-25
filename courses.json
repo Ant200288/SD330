@@ -1,25 +1,25 @@
 {
     "courses": {
         "CMPT330" :{
-            "Course ID": "CMPT 330",
+            "Course ID": "CMPT330",
             "Title": "System Design" ,
             "Semestar": "Spring 2023",
             "Professor": "Andrew Tokash"
         },
         "CMPT418": {
-            "Course ID": "CMPT 418",
+            "Course ID": "CMPT418",
             "Title": "Mobile Security",
             "Semestar": "Fall 2023",
             "Professor": "Casimer DeCusatis"
         },
         "CMPT417": {
-            "Course ID": "CMPT 417",
+            "Course ID": "CMPT417",
             "Title": "Hacking and Penetration Testing",
             "Semestar": "Fall 2023",
             "Professor": "Casimer DeCusatis"
         },
         "REST107": {
-            "Course ID": "REST 107",
+            "Course ID": "REST107",
             "Title": "Intro to Religion",
             "Semestar": "Fall 2023",
             "Professor": "Ross Enochs"

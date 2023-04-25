@@ -34,6 +34,10 @@
     <br>
 
     <h2> <span> Your Available Courses are listed down below! </span></h2>
+    <br>
+    
+
+    <span id = 'json'></span>
 
     <script type = "module">
     
@@ -41,12 +45,26 @@
         
         const response = await fetch("https://Ant200288.github.io/SD330/courses.json");
         const data = await response.json();
+
+        console.log(data);
         
-        htmlString += "<p> Course 1: " + data['courses']['CMPT330']['Course ID']['Title']['Semestar']['Professor'];
-        htmlString += "<p> Course 2: " + data['courses']['CMPT418']['Course ID']['Title']['Semestar']['Professor'];
-        htmlString += "<p> Course 3: " + data['courses']['CMPT417']['Course ID']['Title']['Semestar']['Professor'];
-        htmlString += "<p> Course 4: " + data['courses']['REST107']['Course ID']['Title']['Semestar']['Professor'];
+        let course1 = data['courses']['CMPT330'];
+        let course2 = data['courses']['CMPT418'];
+        let course3 = data['courses']['CMPT417'];
+        let course4 = data['courses']['REST107'];
+
+        htmlString += "<center><p> <span><a href='fb-bookpage.html?courseID=" + course1["Course ID"] + "'> Course 1: " + course1["Course ID"] + ", " + course1["Title"] + ", "+ course1["Semestar"] + ", " + course1["Professor"] + "</a></span>";
+        htmlString += "<br>";
+        htmlString += "<br>";
+        htmlString += "<center><p> <span> Course 2: " + course2["Course ID"] + ", " + course2["Title"] + ", "+ course2["Semestar"] + ", " + course2["Professor"];
+        htmlString += "<br>";
+        htmlString += "<br>";
+        htmlString += "<center><p> <span> Course 3: " + course3["Course ID"] + ", " + course3["Title"] + ", "+ course3["Semestar"] + ", " + course3["Professor"];
+        htmlString += "<br>";
+        htmlString += "<br>";
+        htmlString += "<center><p> <span> Course 4: " + course4["Course ID"] + ", " + course4["Title"] + ", "+ course4["Semestar"] + ", " + course4["Professor"];
         document.getElementById('json').innerHTML += htmlString;
+
     
     </script>
 
