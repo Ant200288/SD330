@@ -33,6 +33,11 @@
         </ol>
     </nav>
 
+    <span id = 'json'>
+        <br>
+        <br>
+    </span>
+
    <script type = "module">
     const queryParams = new URLSearchParams(window.location.search);
     
@@ -45,10 +50,8 @@
 
     let book = data['books'][course['Title']];
 
-    htmlString += "<center><p> <span> " + book["ISBN"] + ", " + course1["Title"] + ", "+ course1["Author"] + ", " + course1["CourseID"];
-    htmlString += "<center><p> <span> " + book["ISBN"] + ", " + course2["Title"] + ", "+ course2["Author"] + ", " + course2["CourseID"];
-    htmlString += "<center><p> <span> " + book["ISBN"] + ", " + course3["Title"] + ", "+ course3["Author"] + ", " + course3["CourseID"];
-    htmlString += "<center><p> <span> " + book["ISBN"] + ", " + course4["Title"] + ", "+ course4["Author"] + ", " + course4["CourseID"];
+    let htmlString = "";
+    htmlString += "<center><p> <span> " + book["ISBN"] + ", " + book["Title"] + ", "+ book["Author"] + ", " + book["CourseID"];
     document.getElementById('json').innerHTML += htmlString;
 
 
