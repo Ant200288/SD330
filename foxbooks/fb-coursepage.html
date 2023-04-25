@@ -33,6 +33,23 @@
 
     <br>
 
+    <h2> <span> Your Available Courses are listed down below! </span></h2>
+
+    <script type = "module">
+    
+        let htmlString = "";
+        
+        const response = await fetch("https://Ant200288.github.io/SD330/courses.json");
+        const data = await response.json();
+        
+        htmlString += "<p> Course 1: " + data['courses']['CMPT330']['Course ID']['Title']['Semestar']['Professor'];
+        htmlString += "<p> Course 2: " + data['courses']['CMPT418']['Course ID']['Title']['Semestar']['Professor'];
+        htmlString += "<p> Course 3: " + data['courses']['CMPT417']['Course ID']['Title']['Semestar']['Professor'];
+        htmlString += "<p> Course 4: " + data['courses']['REST107']['Course ID']['Title']['Semestar']['Professor'];
+        document.getElementById('json').innerHTML += htmlString;
+    
+    </script>
+
 
 
     <div class = "footer">
